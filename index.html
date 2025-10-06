@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #a8c0ff 0%, #d4a5ff 50%, #fbc2eb 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 24px;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 16px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(4px);
+        }
+
+        .card-link::after {
+            content: '→';
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Fase Visualiseringer</h1>
+        <p>Velg en fase for å utforske</p>
+    </div>
+
+    <div class="gallery">
+        <div class="card" onclick="window.location.href='fase1.html'">
+            <div class="card-image">
+                <img src="fase1.png" alt="Fase 1" onerror="this.style.display='none'">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Fase 1</div>
+                <div class="card-description">Utforsk den første fasen av prosjektet</div>
+                <a href="fase1.html" class="card-link">Åpne visualisering</a>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='fase2.html'">
+            <div class="card-image">
+                <img src="fase2.png" alt="Fase 2" onerror="this.style.display='none'">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Fase 2</div>
+                <div class="card-description">Utforsk den andre fasen av prosjektet</div>
+                <a href="fase2.html" class="card-link">Åpne visualisering</a>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='fase3.html'">
+            <div class="card-image">
+                <img src="fase3.png" alt="Fase 3" onerror="this.style.display='none'">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Fase 3</div>
+                <div class="card-description">Utforsk den tredje fasen av prosjektet</div>
+                <a href="fase3.html" class="card-link">Åpne visualisering</a>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='fase4.html'">
+            <div class="card-image">
+                <img src="fase4.png" alt="Fase 4" onerror="this.style.display='none'">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Fase 4</div>
+                <div class="card-description">Utforsk den fjerde fasen av prosjektet</div>
+                <a href="fase4.html" class="card-link">Åpne visualisering</a>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.location.href='fase5.html'">
+            <div class="card-image">
+                <img src="fase5.png" alt="Fase 5" onerror="this.style.display='none'">
+            </div>
+            <div class="card-content">
+                <div class="card-title">Fase 5</div>
+                <div class="card-description">Utforsk den femte fasen av prosjektet</div>
+                <a href="fase5.html" class="card-link">Åpne visualisering</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
